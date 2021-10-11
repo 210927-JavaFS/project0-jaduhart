@@ -1,6 +1,7 @@
 package com.revature;
 
-public interface Placeholder {
+public class ScannerTest {
+	
 	
 	/*
 	 * This is a placeholder file created simple to maintain the Maven file structure on GitHub. 
