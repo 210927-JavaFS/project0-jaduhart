@@ -1,12 +1,19 @@
 package com.revature;
 
 import com.revature.controllers.MenuController;
-import com.revature.models.;
+//import com.revature.controllers.MenuController;
+import com.revature.controllers.UserController;
+
 
 public class Driver {
 
+	private static UserController userController = new UserController();
+	private static MenuController menuController = new MenuController();
 	public static void main(String[] args) {
-		System.out.println("Welcome to the land of Revature, your adventure awaits.");
+		
+		userController.displayUsers();
+		menuController.Menu();
+		/*System.out.println("Welcome to the land of Revature, your adventure awaits.");
 		
 		MenuController menuController = new MenuController();
 
@@ -20,6 +27,6 @@ public class Driver {
 		
 		menuController.savePlayer(player);
 		System.out.println("Saving complete. See you again soon.");
-	}
+	*/}
 
 }
