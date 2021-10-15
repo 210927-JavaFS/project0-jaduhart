@@ -8,6 +8,7 @@ public class User {
 	private int accLevel;
 	private String passwd;
 	private double balance;
+	private int active;
 	
 	public User(String firstName, String lastName, int userId, int accId, int accLevel, String passwd) {
 		super();
@@ -18,7 +19,7 @@ public class User {
 		this.accLevel = accLevel;
 		this.passwd = passwd;
 	}
-	public User(String firstName, String lastName, int userId, int accId, int accLevel, String passwd, double balance) {
+	public User(String firstName, String lastName, int userId, int accId, int accLevel, String passwd, double balance, int active) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -27,6 +28,7 @@ public class User {
 		this.accLevel = accLevel;
 		this.passwd = passwd;
 		this.balance = balance;
+		this.active = active;
 	}
 	public User() {
 		super();
@@ -73,12 +75,19 @@ public class User {
 	public void setBalance(double balance) {
 		this.balance = balance;
 	}
+	public int isActive() {
+		return active;
+	}
+	public void setActive(int active) {
+		this.active = active;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + accId;
 		result = prime * result + accLevel;
+		result = prime * result + active;
 		long temp;
 		temp = Double.doubleToLongBits(balance);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
@@ -100,6 +109,8 @@ public class User {
 		if (accId != other.accId)
 			return false;
 		if (accLevel != other.accLevel)
+			return false;
+		if (active != other.active)
 			return false;
 		if (Double.doubleToLongBits(balance) != Double.doubleToLongBits(other.balance))
 			return false;
@@ -125,9 +136,8 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [firstName=" + firstName + ", lastName=" + lastName + ", userId=" + userId + ", accId=" + accId
-				+ ", accLevel=" + accLevel + ", passwd=" + passwd + ", balance=" + balance + "]";
+				+ ", accLevel=" + accLevel + ", passwd=" + passwd + ", balance=" + balance + ", active=" + active + "]";
 	}
-
 	
-
+	
 }

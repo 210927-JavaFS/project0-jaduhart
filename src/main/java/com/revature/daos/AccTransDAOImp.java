@@ -55,7 +55,7 @@ public class AccTransDAOImp implements AccTransDAO {
 	@Override
 	public boolean transfer(int id, double amount, int id2) {
 		try(Connection conn = Connectionp0.getConnection()){
-			String sql = "UPDATE BalAcc SET balance = balance + ? WHERE accountID = ?; UPDATE BalAcc SET balance = balance + ? WHERE accountID = ?;";
+			String sql = "UPDATE  SET balance = balance - ? WHERE accountID = ?; UPDATE BalAcc SET balance = balance + ? WHERE accountID = ?;";
 			
 			PreparedStatement statement = conn.prepareStatement(sql);
 			statement.setDouble(1, amount);

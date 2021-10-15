@@ -32,7 +32,7 @@ public class userService {
 	public User userID(int id) {
 		return userDao.getUserID(id);
 	}
-	public int onlyAccId(int id) {
-		return userDao.onlyAccID(id);
+	public void asetActive(int ch, int id) {
+		userDao.asetActive(ch, id);
 	}
 }

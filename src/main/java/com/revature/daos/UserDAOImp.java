@@ -29,6 +29,8 @@ public class UserDAOImp implements UserDAO {
 				User.setUserId(result.getInt("userID"));
 				User.setAccId(result.getInt("accountID"));
 				User.setAccLevel(result.getInt("acc_level"));
+				User.setPassword(result.getString("passwd"));
+				User.setActive(result.getInt("active"));
 				list.add(User);
 				
 			}
@@ -49,7 +51,7 @@ public class UserDAOImp implements UserDAO {
 			
 			PreparedStatement statement = conn.prepareStatement(sql);
 			statement.setInt(1, id);
-			ResultSet result = statement.executeQuery(sql);
+			ResultSet result = statement.executeQuery();
 			User user = new User();
 			
 			if(result.next()) {
@@ -183,7 +185,26 @@ public class UserDAOImp implements UserDAO {
 
 	@Override
 	public boolean userActive(int id) {
-		// TODO Auto-generated method stub
+		try(Connection conn = Connectionp0.getConnection()){
+			String sql = "SELECT active FROM IDNames WHERE userID = ?;";
+			
+			PreparedStatement statement = conn.prepareStatement(sql);
+			statement.setInt(1, id);
+			ResultSet result = statement.executeQuery(sql);
+			User user = new User();
+			
+			if(result.next()) {
+				user.setActive(result.getInt("active"));
+
+				
+			}
+			return true;	
+			
+					
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return false;
 	}
 
@@ -225,10 +246,26 @@ public class UserDAOImp implements UserDAO {
 		}
 		return null;
 	}
-	
-	public int onlyAccID(int id) {
+	@Override
+	public void asetActive(int ch, int id) {
 		try(Connection conn = Connectionp0.getConnection()){
-			String sql = "SELECT accountID FROM BalAcc WHERE userID = ?;";
+			String sql = "UPDATE idnames SET active = ? WHERE userID = ?;";
+			
+			PreparedStatement statement = conn.prepareStatement(sql);
+			statement.setInt(1, ch);
+			statement.setInt(2, id);
+			statement.execute();	
+			
+					
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return;
+	}
+	/*public int onlyAccID(int id) {
+		try(Connection conn = Connectionp0.getConnection()){
+			String sql = "SELECT accountID FROM IDNames WHERE userID = ?;";
 			
 			PreparedStatement statement = conn.prepareStatement(sql);
 			statement.setInt(1, id);
@@ -241,15 +278,7 @@ public class UserDAOImp implements UserDAO {
 
 				
 			}
-						
-			return curI;	
-			
-			
-					
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+
+		}*/
 		}
-		return 0;
-	}
-}
+

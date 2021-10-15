@@ -14,4 +14,10 @@ public class UserController {
 			System.out.println(user);
 		}
 	}
+	public User displayUserID(int id ) {
+		System.out.println("User:");
+		User tempUser = userService.findUserID(id);
+			System.out.println(tempUser);
+			return tempUser;
+		}
 }

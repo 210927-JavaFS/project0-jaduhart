@@ -7,11 +7,11 @@ import com.revature.controllers.UserController;
 
 public class Driver {
 
-	private static UserController userController = new UserController();
+	
 	private static MenuController menuController = new MenuController();
 	public static void main(String[] args) {
 		
-		userController.displayUsers();
+		
 		menuController.Menu();
 		/*System.out.println("Welcome to the land of Revature, your adventure awaits.");
 		

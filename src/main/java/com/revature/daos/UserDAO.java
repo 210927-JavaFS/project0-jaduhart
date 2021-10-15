@@ -22,7 +22,8 @@ public interface UserDAO{
 	public boolean userActive(int id);
 	public User passwd(String passwd);
 	public User findUserPass (int id);
-	public int onlyAccID(int id);
+	public void asetActive(int ch,int id);
+	//public int onlyAccID(int id);
 }
 
 /*
